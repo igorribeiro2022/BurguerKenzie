@@ -1,0 +1,26 @@
+import { CartFooter, CartUl, CartVazio } from './Cart'
+import './Style.css'
+
+function Cart({ cartTotal, setCartTotal, currentSale, setCurrentSale }) {
+
+    return (
+        <aside id='aside-cart'>
+            <div id='header-cart'>
+                <h3>Carrinho de Compras</h3>
+            </div>
+
+            {currentSale.length > 0 ?
+                <>
+                    <ul id='cart-ul'>
+                        {currentSale.map((elem, index) => <CartUl prod={elem} key={index} setCurrentSale={setCurrentSale} currentSale={currentSale}/>)}
+                    </ul>
+                    <CartFooter currentSale={currentSale} setCurrentSale={setCurrentSale} setCartTotal={setCartTotal} cartTotal={cartTotal}/>
+                </>
+                :
+                <CartVazio />
+            }
+        </aside>
+    )
+}
+
+export default Cart

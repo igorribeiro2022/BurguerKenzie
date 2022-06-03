@@ -1,0 +1,72 @@
+* {
+    list-style: none;
+}
+
+#div-cartVazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 25vh;
+}
+
+.prods-li {
+    display: flex;
+    flex-direction: row;
+    margin: 1vw 5vw;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.prods-li figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E0E0E0;
+    border-radius: 10px;
+    width: 30%;
+    height: 30%;
+}
+
+.prods-li figure img {
+    width: 90%;
+}
+
+.prods-li div {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.prods-li div div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.prods-li div div h2 {
+    font-size: 15pt;
+}
+
+.prods-li div div p {
+    font-size: 11pt;
+    font-weight: 300;
+    color: #828282;
+}
+
+.prods-li div p {
+    font-size: 11pt;
+    font-weight: 300;
+    color: #828282;
+}
+
+#footer-cart div {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    margin: auto;
+}
+
+
