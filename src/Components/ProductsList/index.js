@@ -1,12 +1,12 @@
 import Product from '../Product'
 import './Style.css'
 
-function ProductsList({ products, handleClick }) {
+function ProductsList({ products, handleClick, setFilteredProducts }) {
 
     return (
         <section id='section'> {/*   items-wrapper   */}
             <div id='section-div'> {/*   items   */}
-                {products.map((elem, index) => <Product prod={elem} key={index} handleClick={handleClick} />)}
+                {products.map((elem, index) => <Product setFilteredProducts={setFilteredProducts} prod={elem} key={index} handleClick={handleClick} />)}
             </div>
         </section>
     )

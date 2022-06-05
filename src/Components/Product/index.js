@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 import './Style.css'
 
-function Product({ prod, handleClick }){
+function Product({ prod, handleClick, setFilteredProducts }){
     
     return (
         <div className='cards'>
@@ -15,6 +15,7 @@ function Product({ prod, handleClick }){
                 e.preventDefault()
                 handleClick(prod.id)
                 toast.success('Adicionado ao carrinho')
+                // setFilteredProducts([])
             }}>Adicionar</button>
 
         </div>

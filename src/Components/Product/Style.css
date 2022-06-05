@@ -51,4 +51,39 @@
 .cards {
     flex: none;
     scroll-snap-align: start;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 600px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    width: 27%;
+    height: 40vh;
+    margin: 15px 15px 0 0;
+    padding: 15px;
+  }
+
+  .cards h2 {
+    font-size: 12pt;
+  }
+
+  .cards figure {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 40%;
+    margin: 0 auto;
+    overflow: hidden;
+    max-height: 170px;
+    max-width: 157px;
+  }
+
+  .cards figure img {
+    width: auto;
+    height: auto;
+  }
 }

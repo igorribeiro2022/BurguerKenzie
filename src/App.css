@@ -6,6 +6,10 @@
 
 /*////// HEADER //////*/
 
+button{
+  cursor: pointer;
+}
+
 .app-header {
   display: flex;
   flex-direction: column;
@@ -46,9 +50,39 @@
   border-radius: 5px;
 }
 
-/*////// MAIN //////*/
+@media (min-width: 600px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-main {
+  .app-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    max-width: 1300px;
+    margin: 10px;
+  }
+
+  .app-header h1 {
+    font-size: 20pt;
+  }
+  
+  .app-header h1 span{
+    font-size: 14pt;
+  }
+  
+  .main-header {
+    display: flex;
+    width: 90vw;
+    max-width: 1350px;
+
+  }
+  
+  .app-header form input {
+    width: 197px;
+  }
   
 }
-

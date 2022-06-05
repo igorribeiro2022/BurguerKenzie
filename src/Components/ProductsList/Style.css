@@ -1,17 +1,36 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #section {
-    width: 100vw;
+  width: 100vw;
 }
 
 #section-div {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 600px) {
+  #secion {
+    width: 70%;
+  }
+
+  #section-div {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
+    overflow-x: none;
+    flex-wrap: wrap;
+    scroll-snap-type: none;
+    -webkit-overflow-scrolling: none;
+    scroll-behavior: none;
+    width: 110%;
+
+  }
+
+
 }

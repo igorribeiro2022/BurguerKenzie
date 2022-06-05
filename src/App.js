@@ -8,19 +8,30 @@ import 'react-toastify/dist/ReactToastify.min.css'
 function App() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [inputDescription, setInputDescription] = useState('')
   const [currentSale, setCurrentSale] = useState([])
   const [cartTotal, setCartTotal] = useState(0)
 
   function showProducts() {
-
+    const filtered = products.filter((elem) => elem.name.toLowerCase().includes(inputDescription.toLowerCase()))
+    setFilteredProducts(filtered)
+    setInputDescription('')
   }
-
   function handleClick(productId) {
     const findProduct = products.find((elem) => {
       return elem.id === productId
     })
-
+    findProduct.unidade = 1
+    
+    const findInArray = currentSale.find((elem) => elem === findProduct)
+    
+    findInArray === undefined ? 
     setCurrentSale([...currentSale, findProduct])
+    :
+    findProduct.unidade+=1
+
+
+    console.log(findProduct.unidade)
   }
 
   useEffect(() => {
@@ -36,20 +47,31 @@ function App() {
 
         <h1>Burguer <span>Kenzie</span></h1>
         <form>
-          <input placeholder='Digitar Pesquisa' />
-          <button>Pesquisar</button>
-
+          <input value={inputDescription} onChange={(event) => setInputDescription(event.target.value)} placeholder='Digitar Pesquisa' />
+          <button onClick={(event) => {
+            showProducts()
+            event.preventDefault()
+          }
+          }>Pesquisar</button>
         </form>
       </header>
 
       <main className="main-header">
-
-        <ProductsList products={products} handleClick={handleClick} setCurrentSale={setCurrentSale} />
-        <Cart cartTotal={cartTotal} setCartTotal={setCartTotal} currentSale={currentSale} setCurrentSale={setCurrentSale} />
+        {filteredProducts.length > 0 ?
+          <>
+            <ProductsList setFilteredProducts={setFilteredProducts} products={filteredProducts} handleClick={handleClick} setCurrentSale={setCurrentSale} />
+            <Cart cartTotal={cartTotal} setCartTotal={setCartTotal} currentSale={currentSale} setCurrentSale={setCurrentSale} />
+          </>
+          :
+          <>
+            <ProductsList products={products} handleClick={handleClick} setCurrentSale={setCurrentSale} />
+            <Cart cartTotal={cartTotal} setCartTotal={setCartTotal} currentSale={currentSale} setCurrentSale={setCurrentSale} />
+          </>
+        }
 
       </main>
       <ToastContainer
-        theme= "colored"
+        theme="colored"
         position="top-right"
         autoClose={2000}
         hideProgressBar={false}
