@@ -14,8 +14,7 @@ export function CartVazio() {
 }
 
 
-export function CartUl({ prod, currentSale, setCurrentSale }) {
-
+export function CartUl({ prod, currentSale, setCurrentSale, handleChange }) {
 
     function removeItem(id, name) {
         const newCurrent = currentSale.filter((elem) => elem.id !== id)
@@ -36,7 +35,7 @@ export function CartUl({ prod, currentSale, setCurrentSale }) {
                 </div>
                 <div className="cart-item">
                     <p>{prod.category}</p>
-                    <input className="inpQuant" type="number" min={1} defaultValue={prod.unidade}/>
+                    <input onChange={(event) => handleChange(prod.id , Number(event.target.value))} className="inpQuant" type="number" min={1} max={99} defaultValue={prod.unidade}/>
                 </div>
             </div>
         </li>
@@ -46,7 +45,8 @@ export function CartUl({ prod, currentSale, setCurrentSale }) {
 export function CartFooter({ currentSale, cartTotal, setCartTotal, setCurrentSale }) {
 
     useEffect(() => {
-        const total = currentSale.reduce((acc, atual) => acc + atual.price*atual.unidade, 0)
+        // console.log(currentSale)
+        const total = currentSale.reduce((acc, atual) => acc + atual.price * atual.unidade, 0)
         setCartTotal(total)
     }, [currentSale])
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
 import ProductsList from './Components/ProductsList';
 import Cart from './Components/Cart';
-import { ToastContainer } from 'react-toastify'
 import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css'
 
@@ -17,21 +17,30 @@ function App() {
     setFilteredProducts(filtered)
     setInputDescription('')
   }
+
   function handleClick(productId) {
     const findProduct = products.find((elem) => {
       return elem.id === productId
     })
     findProduct.unidade = 1
-    
+
     const findInArray = currentSale.find((elem) => elem === findProduct)
-    
-    findInArray === undefined ? 
-    setCurrentSale([...currentSale, findProduct])
-    :
-    findProduct.unidade+=1
 
+    if (findInArray === undefined) {
+      setCurrentSale([...currentSale, findProduct])
+      toast.success('Adicionado ao carrinho!')
+    } else {
+      toast.error(`${findProduct.name} já está no carrinho, altere a quantidade!`)
+    }
+  }
 
-    console.log(findProduct.unidade)
+  function handleChange(productId, value) {
+    const findProduct = products.find((elem) => {
+      return elem.id === productId
+    })
+
+    findProduct.unidade = value
+    setCurrentSale([...currentSale])
   }
 
   useEffect(() => {
@@ -60,12 +69,12 @@ function App() {
         {filteredProducts.length > 0 ?
           <>
             <ProductsList setFilteredProducts={setFilteredProducts} products={filteredProducts} handleClick={handleClick} setCurrentSale={setCurrentSale} />
-            <Cart cartTotal={cartTotal} setCartTotal={setCartTotal} currentSale={currentSale} setCurrentSale={setCurrentSale} />
+            <Cart handleChange={handleChange} cartTotal={cartTotal} setCartTotal={setCartTotal} currentSale={currentSale} setCurrentSale={setCurrentSale} />
           </>
           :
           <>
             <ProductsList products={products} handleClick={handleClick} setCurrentSale={setCurrentSale} />
-            <Cart cartTotal={cartTotal} setCartTotal={setCartTotal} currentSale={currentSale} setCurrentSale={setCurrentSale} />
+            <Cart handleChange={handleChange} cartTotal={cartTotal} setCartTotal={setCartTotal} currentSale={currentSale} setCurrentSale={setCurrentSale} />
           </>
         }
 
@@ -73,7 +82,7 @@ function App() {
       <ToastContainer
         theme="colored"
         position="top-right"
-        autoClose={2000}
+        autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

@@ -14,8 +14,6 @@ function Product({ prod, handleClick, setFilteredProducts }){
             <button onClick={(e) => {
                 e.preventDefault()
                 handleClick(prod.id)
-                toast.success('Adicionado ao carrinho')
-                // setFilteredProducts([])
             }}>Adicionar</button>
 
         </div>
