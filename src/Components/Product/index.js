@@ -1,7 +1,6 @@
-import { toast } from 'react-toastify'
 import './Style.css'
 
-function Product({ prod, handleClick, setFilteredProducts }){
+function Product({ prod, handleClick }){
     
     return (
         <div className='cards'>
@@ -10,7 +9,7 @@ function Product({ prod, handleClick, setFilteredProducts }){
             </figure>
             <h2>{prod.name}</h2>
             <p className='cards-category'>{prod.category}</p>
-            <p className='cards-price'>R$ {prod.price.toFixed(2).replace(".", ",")}</p>
+            <p className='cards-price'>{prod.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</p>
             <button onClick={(e) => {
                 e.preventDefault()
                 handleClick(prod.id)

@@ -68,7 +68,7 @@ function App() {
       <main className="main-header">
         {filteredProducts.length > 0 ?
           <>
-            <ProductsList setFilteredProducts={setFilteredProducts} products={filteredProducts} handleClick={handleClick} setCurrentSale={setCurrentSale} />
+            <ProductsList products={filteredProducts} handleClick={handleClick} setCurrentSale={setCurrentSale} />
             <Cart handleChange={handleChange} cartTotal={cartTotal} setCartTotal={setCartTotal} currentSale={currentSale} setCurrentSale={setCurrentSale} />
           </>
           :
@@ -81,7 +81,7 @@ function App() {
       </main>
       <ToastContainer
         theme="colored"
-        position="top-right"
+        position="bottom-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
