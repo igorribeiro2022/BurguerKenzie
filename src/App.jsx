@@ -6,11 +6,11 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [inputDescription, setInputDescription] = useState("");
-  const [currentSale, setCurrentSale] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
+  const [ products, setProducts ] = useState([]);
+  const [ filteredProducts, setFilteredProducts ] = useState([]);
+  const [ inputDescription, setInputDescription ] = useState("");
+  const [ currentSale, setCurrentSale ] = useState([]);
+  const [ cartTotal, setCartTotal ] = useState(0);
 
   function showProducts() {
     const filtered = products.filter((elem) =>
